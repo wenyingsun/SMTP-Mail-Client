@@ -4,6 +4,8 @@ from socket import *
 def smtp_client(port=1025, mailserver='127.0.0.1'):
     msg = "\r\n My message"
     endmsg = "\r\n.\r\n"
+    recipient = "<ws2399@nyu.edu>"
+    sender = "<jessiesunwork@gmail.com>"
 
     # Choose a mail server (e.g. Google mail server) if you want to verify the script beyond GradeScope
     # Create socket called clientSocket and establish a TCP connection with mailserver and port
@@ -19,7 +21,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
  #       print('220 reply not received from server.')
 
     # Send HELO command and print server response.
-    heloCommand = 'HELO Alice\r\n'
+    heloCommand = 'HELLO Alice\r\n'
     clientSocket.send(heloCommand.encode())
     recv1 = clientSocket.recv(1024).decode()
  #   print(recv1)
@@ -29,7 +31,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # Send MAIL FROM command and print server response.
     # Fill in start
     # print('Send MAIL')
-    sendMail = 'MAIL FROM: jessiesunwork@gmail.com\r\n'
+    sendMail = 'MAIL FROM: ' + sender + '\r\n'
     clientSocket.send(sendMail.encode())
     recv2 = clientSocket.recv(1024).decode()
     # print(recv2)
@@ -42,7 +44,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # Send RCPT TO command and print server response.
     # Fill in start
     # print('Sending RCPT')
-    rcptTo = 'RCPT TO: ws2399@nyu.edu\r\n'
+    rcptTo = 'RCPT TO: ' + recipient + '\r\n'
     clientSocket.send(rcptTo.encode())
     recv3 = clientSocket.recv(1024).decode()
     # Fill in end
@@ -81,3 +83,5 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
 if __name__ == '__main__':
     smtp_client(1025, '127.0.0.1')
+
+
