@@ -32,7 +32,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # Fill in start
     # print('Send MAIL')
     # sendMail = 'MAIL FROM: ' + sender + '\r\n'
-    clientSocket.send(b"MAIL FROM: username@gmail.com\r\n")
+    clientSocket.send(b"MAIL FROM: username@gmail.com\r\n".encode())
     recv2 = clientSocket.recv(1024).decode()
     # print(recv2)
     # if recv2[:3] != '250':
