@@ -59,7 +59,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # Send message data.
     # Fill in start
 
-    clientSocket.send(b"SUBJECT: SMTP Server\n"+msg)
+    clientSocket.send(msg)
     recv5 = clientSocket.recv(1024).decode()
 
     # Fill in end
@@ -67,7 +67,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # Message ends with a single period.
     # Fill in start
 
-    clientSocket.send(b"SUBJECT: SMTP Server\n"+endmsg)
+    clientSocket.send(endmsg)
     recv6 = clientSocket.recv(1024).decode()
     # Fill in end
 
