@@ -2,8 +2,8 @@ from socket import *
 
 
 def smtp_client(port=1025, mailserver='127.0.0.1'):
-    msg = b"\r\n My message"
-    endmsg = b"\r\n.\r\n"
+    msg = "\r\n My message"
+    endmsg = "\r\n.\r\n"
     # recipient = "<ws2399@nyu.edu>"
     # sender = "<jessiesunwork@gmail.com>"
 
@@ -59,7 +59,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # Send message data.
     # Fill in start
 
-    clientSocket.send(msg)
+    clientSocket.send(b"\r\n My message")
     recv5 = clientSocket.recv(1024).decode()
 
     # Fill in end
@@ -67,7 +67,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # Message ends with a single period.
     # Fill in start
 
-    clientSocket.send(endmsg)
+    clientSocket.send(b"\r\n.\r\n")
     recv6 = clientSocket.recv(1024).decode()
     # Fill in end
 
@@ -83,6 +83,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
 if __name__ == '__main__':
     smtp_client(1025, '127.0.0.1')
+
 
 
 
